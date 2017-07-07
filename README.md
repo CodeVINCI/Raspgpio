@@ -11,3 +11,5 @@ echo 4 > export
 ls (you should see gpio4 listed)
 
 Run the script.
+
+See Desired output at https://www.youtube.com/watch?v=YZJUvTsqepI
