@@ -4,6 +4,7 @@
 #include <dirent.h>
 #include <string.h>
 #include <unistd.h>
+
 int main(int argc, char *argv[])
 {
 	DIR *dir;
@@ -41,7 +42,6 @@ int main(int argc, char *argv[])
 	   sleep(1);
 	count++;
 	}
-
 	return 0;
 
 }
