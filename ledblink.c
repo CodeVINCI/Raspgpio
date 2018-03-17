@@ -3,12 +3,12 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
-
+#include <unistd.h>
 int main(int argc, char *argv[])
 {
 	DIR *dir;
 	struct dirent *sd;
-	int flag=0;
+	int flag=0,count=0;
 
 	dir = opendir("/sys/class/gpio");
 	if(dir == NULL)
@@ -27,9 +27,20 @@ int main(int argc, char *argv[])
 	if(flag == 0)
 		{
 			system("echo 4 > /sys/class/gpio/export");
-			system("echo out > /sys/class/gpio/gpio4/direction");
-			printf("done exporting gpio and gpio set as output\n");
+			printf("done exporting gpio4\n");
 		}
+
+	system("echo out > /sys/class/gpio/gpio4/direction");
+	
+
+	while(count < 10)
+	{
+	   system("echo 1 > /sys/class/gpio/gpio4/value");
+	   sleep(1);
+	   system("echo 0 > /sys/class/gpio/gpio4/value");
+	   sleep(1);
+	count++;
+	}
 
 	return 0;
 
